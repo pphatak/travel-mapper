@@ -5,7 +5,7 @@
         <style type="text/css">
             html { height: 100% }
             body { height: 100%; margin: 0; padding: 0 }
-            #map-canvas { height: 100% }
+            #map-canvas { height: 50%; width: 50% }
             </style>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
         <script type="text/javascript">
@@ -37,10 +37,10 @@
                                  
                                  // locates the city / address in my-address textbox
                                  if (status == google.maps.GeocoderStatus.OK) {
-                                    var myLatlng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-                                    var mapOptions = {
-                                    zoom: 3, // adjust based on distance ?
-                                    center: myLatlng
+                                 var myLatlng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+                                 var mapOptions = {
+                                 zoom: 2, // adjust based on distance ?
+                                 center: myLatlng
                                  }
                                  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                                  
@@ -67,7 +67,7 @@
                                  
                                  flightPath.setMap(map);
                                  
-                                 } 
+                                 }
                                  
                                  else {
                                  alert("Geocode was not successful for the following reason: " + status);
@@ -79,8 +79,16 @@
             </script>
     </head>
     <body>
-        <input type="text" id="my-address" size="100">
-            <button id="getCords" onClick="codeAddress();">Enter your destination</button>
-                <div id="map-canvas"/>
-                </body>
-                </html>
+        <h2>Document your trip !</h2>
+        Enter your trip destination
+        <input type="text" id="my-address" size="100"/>
+        <p>
+        Enter a short description about your destination
+        <br>
+        <textarea rows="4" cols="50">
+        </textarea>
+        </p>
+        <button id="getCords" onClick="codeAddress();">Map it !</button>
+        <div id="map-canvas"/>
+    </body>
+</html>
